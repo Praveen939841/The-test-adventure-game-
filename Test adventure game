@@ -1,0 +1,77 @@
+import time
+
+def introduction():
+    print("Welcome to the Mysterious Forest Adventure!")
+    print("You find yourself at the entrance of a dense and mysterious forest.")
+    print("Your objective is to navigate through the forest and reach the hidden treasure.")
+    print("Be careful, as your choices will determine your fate!")
+
+def make_choice(choices):
+    print("\nChoose your next move:")
+    for i, choice in enumerate(choices, 1):
+        print(f"{i}. {choice}")
+
+    while True:
+        try:
+            choice = int(input("Enter the number of your choice: "))
+            if 1 <= choice <= len(choices):
+                return choice
+            else:
+                print("Invalid choice. Please enter a valid number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+def forest_path():
+    print("\nYou enter the forest and come across a fork in the path.")
+    choices = ["Take the left path.", "Take the right path."]
+    choice = make_choice(choices)
+
+    if choice == 1:
+        print("\nYou follow the left path.")
+        time.sleep(1)
+        print("You encounter a friendly squirrel.")
+        time.sleep(1)
+        print("The squirrel leads you to a magical pond.")
+        time.sleep(1)
+        print("Congratulations! You found a shortcut to the hidden treasure!")
+        return True
+    else:
+        print("\nYou take the right path.")
+        time.sleep(1)
+        print("You encounter a pack of wolves.")
+        time.sleep(1)
+        print("Oh no! The wolves chase you away.")
+        return False
+
+def dark_cave():
+    print("\nYou reach a dark cave with a mysterious glow coming from inside.")
+    time.sleep(1)
+    print("You hear strange noises echoing from the cave.")
+    choices = ["Enter the cave.", "Bypass the cave."]
+    choice = make_choice(choices)
+
+    if choice == 1:
+        print("\nYou enter the cave.")
+        time.sleep(1)
+        print("Inside, you find a treasure chest!")
+        time.sleep(1)
+        print("Congratulations! You found the hidden treasure!")
+        return True
+    else:
+        print("\nYou decide to bypass the cave.")
+        time.sleep(1)
+        print("You continue your journey through the forest.")
+        return False
+
+def main():
+    introduction()
+
+    if forest_path():
+        print("\nYou successfully navigated through the forest!")
+        print("You found the hidden treasure and completed the adventure!")
+    else:
+        print("\nUnfortunately, your journey through the forest was not successful.")
+        print("Better luck next time!")
+
+if __name__ == "__main__":
+    main()
